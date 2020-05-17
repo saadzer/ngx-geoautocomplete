@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjadli/ngx-geoautocomplete.git"
+    "url": "git+https://github.com/saadzer/ngx-geoautocomplete.git"
   },
   "keywords": [
     "angular6",
@@ -113,5 +113,9 @@
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }
