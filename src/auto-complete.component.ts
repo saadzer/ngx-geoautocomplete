@@ -27,7 +27,9 @@ export interface Settings {
   resOnSearchButtonClickOnly?: boolean;
   useGoogleGeoApi?: boolean;
   inputPlaceholderText?: string;
+  recentSearchesText? : string ; 
   inputString?: string;
+  useCurrentLocationText?: string;
   showSearchButton?: boolean;
   showRecentSearch?: boolean;
   showCurrentLocation?: boolean;
@@ -61,14 +63,14 @@ export interface Settings {
         <li *ngIf="settings.showCurrentLocation" class="currentlocation">
           <a href="javascript:;" (click)="currentLocationSelected()">
             <i class="location-icon" *ngIf="settings.currentLocIconUrl"
-               [ngStyle]="{'background-image': 'url(' + settings.currentLocIconUrl + ')'}"></i>Use Current Location
+               [ngStyle]="{'background-image': 'url(' + settings.currentLocIconUrl + ')'}"></i>{{settings.useCurrentLocationText}}
             <i class="location-icon current-default-icon" *ngIf="!settings.currentLocIconUrl"></i>
           </a>
         </li>
         <li class="heading heading-recent" *ngIf="!recentDropdownOpen && queryItems.length"><span>Locations</span><span
           class="line line-location"></span></li>
         <li class="heading heading-recent" *ngIf="recentDropdownOpen && queryItems.length">
-          <span>Recent Searches</span><span class="line line-recent"></span>
+          <span>{{settings.recentSearchesText}}</span><span class="line line-recent"></span>
         </li>
         <li *ngFor="let data of queryItems;let $index = index" [ngClass]="{'active': data.active}">
           <a href="javascript:;" (mouseover)="activeListNode($index)" (click)="selectedListNode($index)">
@@ -324,6 +326,8 @@ export class AutoCompleteComponent implements OnInit, OnChanges {
     useGoogleGeoApi: true,
     inputPlaceholderText: 'Enter Area Name',
     inputString: '',
+    recentSearchesText : 'Recent Searches', 
+    useCurrentLocationText : 'Use current location', 
     showSearchButton: true,
     showRecentSearch: true,
     showCurrentLocation: true,
