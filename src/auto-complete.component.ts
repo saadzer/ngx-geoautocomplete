@@ -27,9 +27,10 @@ export interface Settings {
   resOnSearchButtonClickOnly?: boolean;
   useGoogleGeoApi?: boolean;
   inputPlaceholderText?: string;
-  recentSearchesText? : string ; 
+  recentSearchesText? : string;
   inputString?: string;
   useCurrentLocationText?: string;
+  recentLocationsText?: string;
   showSearchButton?: boolean;
   showRecentSearch?: boolean;
   showCurrentLocation?: boolean;
@@ -67,7 +68,7 @@ export interface Settings {
             <i class="location-icon current-default-icon" *ngIf="!settings.currentLocIconUrl"></i>
           </a>
         </li>
-        <li class="heading heading-recent" *ngIf="!recentDropdownOpen && queryItems.length"><span>Locations</span><span
+        <li class="heading heading-recent" *ngIf="!recentDropdownOpen && queryItems.length"><span>{{settings.recentLocationsText}}</span><span
           class="line line-location"></span></li>
         <li class="heading heading-recent" *ngIf="recentDropdownOpen && queryItems.length">
           <span>{{settings.recentSearchesText}}</span><span class="line line-recent"></span>
@@ -326,8 +327,9 @@ export class AutoCompleteComponent implements OnInit, OnChanges {
     useGoogleGeoApi: true,
     inputPlaceholderText: 'Enter Area Name',
     inputString: '',
-    recentSearchesText : 'Recent Searches', 
-    useCurrentLocationText : 'Use current location', 
+    recentSearchesText : 'Recent Searches',
+    useCurrentLocationText : 'Use current location',
+    recentLocationsText : 'Recent Locations',
     showSearchButton: true,
     showRecentSearch: true,
     showCurrentLocation: true,
